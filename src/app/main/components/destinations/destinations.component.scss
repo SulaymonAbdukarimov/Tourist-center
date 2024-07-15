@@ -1,0 +1,106 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  column-gap: 24px;
+  row-gap: 150px;
+}
+
+.img__wrapper {
+  width: 402px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.card {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.card_btn__wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: -85px;
+
+  button {
+    font-size: 50px;
+    line-height: 60px;
+    width: 100%;
+    border-radius: 42px;
+    border: 2px solid;
+    font-weight: 400;
+    height: 90px;
+    background-color: white;
+    cursor: pointer;
+  }
+  button.sharm {
+    font-size: 32px;
+    line-height: 39px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .img__wrapper {
+    width: 350px;
+  }
+  .card_btn__wrapper {
+    position: absolute;
+    bottom: -80px;
+
+    button {
+      font-size: 40px;
+      line-height: 50px;
+      height: 80px;
+    }
+    button.sharm {
+      font-size: 22px;
+      line-height: 29px;
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .img__wrapper {
+    width: 200px;
+  }
+  .card_btn__wrapper {
+    position: absolute;
+    bottom: -60px;
+
+    button {
+      font-size: 30px;
+      line-height: 40px;
+      height: 60px;
+    }
+
+    button.sharm {
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    row-gap: 60px;
+  }
+
+  .img__wrapper {
+    width: 150px;
+  }
+  .card_btn__wrapper {
+    width: 160px;
+    position: absolute;
+    bottom: -30px;
+
+    button {
+      font-size: 15px;
+      line-height: 18px;
+      height: 30px;
+    }
+  }
+}

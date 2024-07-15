@@ -1,0 +1,14 @@
+.info__wrapper {
+  margin-top: 137px;
+  width: 100%;
+}
+
+.info__content {
+  max-width: 1433px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1433px) {
+  .info__content {
+    max-width: 90%;
+  }
+}

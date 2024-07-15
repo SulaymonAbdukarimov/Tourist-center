@@ -1,0 +1,21 @@
+<div class="cards">
+  @for (destination of destinationList; track destination.id;) {
+  <div>
+    <div class="card" (click)="showDescription(destination.id)">
+      <div class="img__wrapper">
+        <img [src]="destination.image" [alt]="destination.placeName">
+      </div>
+      <div class="card_btn__wrapper">
+        <button [class.sharm]="destination.placeName =='ШАРМ-ЭШ-ШЕЙХ'">{{destination.placeName}}</button>
+      </div>
+    </div>
+    @for (accItem of accardion[getArrayIndexOfAccardion(destination.id) -1]; track accItem.id ) {
+    @if (accItem.open && activeAccardion[destination.id]) {
+    <div class="more_info">
+      <p>{{destination.description}}</p>
+    </div>
+    }
+    }
+  </div>
+  }
+</div>
