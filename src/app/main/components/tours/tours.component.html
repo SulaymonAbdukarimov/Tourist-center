@@ -1,3 +1,25 @@
-<p>
-  tours works!
-</p>
+<div class="tours">
+  <div class="tours__title">
+    <div class="first">
+      Туры
+    </div>
+    <div class="second">
+      желаем хорошего отдыха
+    </div>
+  </div>
+  <div class="cards">
+    @for (tour of tours; track $index) {
+    <div class="card">
+      <p class="place">{{tour.placeName}}</p>
+      <div class="img__wrapper">
+        <img [src]="tour.image" [alt]="tour.placeName">
+      </div>
+      <div class="price__wrapper">
+        <div class="price">
+          от {{tour.price}} $
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

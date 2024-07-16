@@ -173,6 +173,7 @@ export class DestinationsComponent implements OnInit {
       this.destinationList.pop()
     }
     this.isMobile.set(window.innerWidth < 700)
+    this.columnCount = this.isMobile() ? 2 : 3
   }
 
   ngOnInit() {
@@ -180,7 +181,6 @@ export class DestinationsComponent implements OnInit {
   }
 
   handleAccardionShowing() {
-
     let arr: any = [];
     this.destinationList.forEach((description, index) => {
       let obj: Accardion = {
