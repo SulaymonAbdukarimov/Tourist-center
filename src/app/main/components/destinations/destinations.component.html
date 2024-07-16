@@ -1,44 +1,33 @@
 <div>
   <div class="cards">
-    @for (destination of destinationList; track destination.id;) {
+    @for (acc of accardion; track acc;let idx = $index) {
     <div>
-      <div class="card" (click)="showDescription(destination.id)">
-        <div class="img__wrapper">
-          <img [src]="destination.image" [alt]="destination.placeName">
+      <div class="card__inner">
+        @for (destination of acc; track $index) {
+        <div class="card" (click)="showDescription(destination.id)">
+          <div class="img__wrapper">
+            <img [src]="destination.image" [alt]="destination.placeName">
+          </div>
+          <div class="card_btn__wrapper">
+            <button [class.sharm]="destination.placeName =='ШАРМ-ЭШ-ШЕЙХ'">{{destination.placeName}}</button>
+          </div>
         </div>
-        <div class="card_btn__wrapper">
-          <button [class.sharm]="destination.placeName =='ШАРМ-ЭШ-ШЕЙХ'">{{destination.placeName}}</button>
-        </div>
+        }
       </div>
-      <!-- @for (accItem of accardion[getArrayIndexOfAccardion(destination.id) -1]; track accItem.id ) {
-      @if (accItem.open && activeAccardion[destination.id]) {
-      <div class="more_info">
-        <p>{{destination.description}}</p>
+      @if( acc[0] && getDescriptionData(acc[0]?.['column']) && getDescriptionData(acc[0]?.['column'])?.open) {
+      <div class="card__detail">
+        <div class="card__text">
+          {{getDescriptionData(acc[0]?.['column'])?.description}}
+        </div>
+        <div class="img__wrappper" [class.gruziya]="getDescriptionData(acc[0]?.['column'])?.placeName == 'ГРУЗИЯ'">
+          <img [src]="getDescriptionData(acc[0]?.['column'])?.detailImg" alt="dubai">
+        </div>
       </div>
       }
-      } -->
     </div>
     }
   </div>
 
-  <div class="card__detail">
-    <div class="card__text">
-      Город и эмират на побережье Персидского залива
-      в Объединенных Арабских
-      Эмиратах, который славится
-      своими роскошными магазинами, ультрасовременной
-      архитектурой, ресторанами и ночными клубами.
-      Силуэт города формируют бесчисленные небоскребы,
-      в том числе Бурдж-Халифа высотой 830 метров.
-      У его основания расположен музыкальный
-      фонтан "Дубай", подсвеченный прожекторами.
-      На искусственном острове рядом с побережьем
-      находится курорт Atlantis The Palm с аквапарком и
-      парком морских животных.
-    </div>
-    <div class="img__wrappper">
-      <img src="assets/images/antalia_desc.png" alt="dubai">
-    </div>
-  </div>
+
 
 </div>

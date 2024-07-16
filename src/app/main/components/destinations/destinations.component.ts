@@ -9,9 +9,8 @@ interface Destinations {
   detailImg: string
 }
 
-interface Accardion {
+interface Accardion extends Destinations {
   open: boolean,
-  id?: number,
   column: number
 }
 
@@ -167,7 +166,9 @@ export class DestinationsComponent implements OnInit {
   accardion: any[] = [];
   activeAccardion: Record<string, boolean> = {
   }
+  activeAccardionList: Accardion[] = []
   columnCount = this.isMobile() ? 2 : 3
+
   constructor() {
     if (window.innerWidth < 700) {
       this.destinationList.pop()
@@ -180,13 +181,20 @@ export class DestinationsComponent implements OnInit {
     this.handleAccardionShowing()
   }
 
+  getDescriptionData(column: number) {
+    return this.activeAccardionList.find(act => act.column == column)
+  }
   handleAccardionShowing() {
     let arr: any = [];
     this.destinationList.forEach((description, index) => {
       let obj: Accardion = {
         open: false,
         id: description.id,
-        column: this.getArrayIndexOfAccardion(index)
+        column: this.getArrayIndexOfAccardion(index),
+        placeName: description.placeName,
+        detailImg: description.detailImg,
+        description: description.description,
+        image: description.image
       }
 
       if (!(description.id in this.activeAccardion)) {
@@ -212,6 +220,12 @@ export class DestinationsComponent implements OnInit {
           acc.open = !acc.open;
           if (acc.id in this.activeAccardion) {
             this.activeAccardion[acc.id] = !this.activeAccardion[acc.id]
+          }
+          if (this.activeAccardionList.length && this.activeAccardionList.find((ac) => ac.column == acc.column)) {
+            this.activeAccardionList = this.activeAccardionList.filter((ac) => ac.column != acc.column);
+            this.activeAccardionList.push(acc)
+          } else {
+            this.activeAccardionList.push(acc)
           }
         } else {
           acc.open = false
