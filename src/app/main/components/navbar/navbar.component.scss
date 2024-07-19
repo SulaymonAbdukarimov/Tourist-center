@@ -5,7 +5,10 @@
   gap: 244px;
   position: absolute;
   width: 100%;
+  z-index: 44;
   top: 0px;
+  top: -154px;
+  animation: slideIn 0.5s ease-in-out forwards;
 }
 .nav__background {
   position: absolute;
@@ -16,6 +19,24 @@
   background-color: #000000;
   opacity: 30%;
   z-index: 2;
+}
+
+.line_hover,
+.bottom_line {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
+.line_hover::after {
+  content: "";
+  display: block;
+  width: 0;
+  border-bottom: 2px solid white;
+  margin: 0 auto;
+  transition: all 0.3s linear 0s;
+}
+.line_hover:hover:after {
+  width: 30%;
 }
 .nav__img {
   position: relative;
@@ -62,22 +83,38 @@
     height: 100%;
   }
 }
-@media screen and (max-width: 1600px) {
-  .nav {
-    gap: 100px;
+
+@keyframes slideIn {
+  0% {
+    top: -154px;
+  }
+  100% {
+    top: 0;
   }
 }
 
-@media screen and (max-width: 1400px) {
+// @media screen and (max-width: 1600px) {
+//   .nav {
+//     gap: 100px;
+//   }
+// }
+
+// @media screen and (max-width: 1400px) {
+//   .nav {
+//     gap: 50px;
+//   }
+//   .nav__lists {
+//     gap: 20px;
+//   }
+// }
+
+@media screen and (max-width: 1500px) {
   .nav {
     gap: 50px;
   }
   .nav__lists {
     gap: 20px;
   }
-}
-
-@media screen and (max-width: 1300px) {
   .nav__lists {
     a {
       .content {
@@ -134,5 +171,15 @@
   }
   .nav__lists {
     gap: 9px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .nav__lists {
+    a {
+      .content {
+        font-size: 8px;
+        line-height: 10px;
+      }
+    }
   }
 }

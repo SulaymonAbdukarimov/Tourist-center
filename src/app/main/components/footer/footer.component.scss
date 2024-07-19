@@ -1,5 +1,5 @@
 .footer {
-  margin-top: 670px;
+  margin-top: 50px;
 }
 strong {
   font-size: 36px;
@@ -34,27 +34,21 @@ ul {
 }
 
 .logo {
-  margin-top: 200px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
+  img {
+    width: 500px;
+    height: auto;
+  }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
   strong {
     font-size: 25px;
     line-height: 27px;
   }
-  .footer {
-    margin-top: 200px;
-  }
-  .logo {
-    width: 90%;
-    margin-top: 117px;
-    img {
-      width: 100%;
-      object-fit: contain;
-    }
-  }
+
   ul {
     margin-top: 20px;
     gap: 35px;
@@ -78,9 +72,7 @@ ul {
     font-size: 13px;
     line-height: 15px;
   }
-  .footer {
-    margin-top: 170px;
-  }
+
   ul {
     margin-top: 18px;
     gap: 10px;
@@ -101,5 +93,16 @@ ul {
   .phone__numbers {
     font-size: 7px;
     line-height: 9px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .logo {
+    width: 70%;
+    margin: 0 auto;
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
   }
 }

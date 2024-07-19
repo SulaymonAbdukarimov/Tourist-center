@@ -6,9 +6,10 @@
 .info__content {
   max-width: 1433px;
   margin: 0 auto;
+  padding: 0px 30px;
 }
-@media screen and (max-width: 1433px) {
-  .info__content {
-    max-width: 90%;
+@media screen and (max-width: 1500px) {
+  .info__wrapper {
+    margin-top: 70px;
   }
 }

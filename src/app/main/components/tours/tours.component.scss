@@ -1,6 +1,6 @@
 .tours {
   font-family: "Montserrat", sans-serif;
-  margin-top: 280px;
+  margin-top: 50px;
 }
 .tours__title {
   text-align: center;
@@ -76,7 +76,7 @@
   font-weight: 700;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
   .card {
     .place {
       position: absolute;
@@ -85,10 +85,8 @@
       color: white;
     }
   }
-  .tours {
-    margin-top: 100px;
-  }
   .tours__title {
+    margin-bottom: 30px;
     .first {
       font-size: 60px;
       line-height: 70px;
