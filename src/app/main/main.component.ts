@@ -10,22 +10,21 @@ import { ToursComponent } from './components/tours/tours.component';
 import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   standalone: true,
-  imports: [AboutCompanyComponent,
+  imports: [
+    AboutCompanyComponent,
     ContactUsComponent,
     DestinationsComponent,
     FooterComponent,
     HeroComponent,
     NavbarComponent,
-    ToursComponent],
+    ToursComponent,
+  ],
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

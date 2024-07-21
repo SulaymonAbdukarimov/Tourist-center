@@ -1,24 +1,26 @@
 .tours {
   font-family: "Montserrat", sans-serif;
   margin-top: 50px;
+  transition: all 0.3s;
+  position: relative;
+  animation: swipe-right 0.7s 1;
 }
 .tours__title {
   text-align: center;
-  margin-bottom: 77px;
+  margin-bottom: 34px;
   .first {
-    font-size: 128px;
-    line-height: 150px;
+    font-size: 40px;
+    font-weight: 700;
   }
   .second {
-    font-size: 64px;
-    line-height: 78px;
+    font-size: 35px;
   }
 }
 
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  row-gap: 110px;
+  row-gap: 40px;
   column-gap: 35px;
 
   .img__wrapper {
@@ -86,19 +88,17 @@
     }
   }
   .tours__title {
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     .first {
-      font-size: 60px;
-      line-height: 70px;
+      font-size: 35px;
     }
     .second {
       font-size: 30px;
-      line-height: 35px;
     }
   }
   .cards {
-    row-gap: 50px;
-    column-gap: 17px;
+    row-gap: 24px;
+    column-gap: 24px;
   }
 
   .place {
@@ -111,21 +111,28 @@
   }
 }
 
+@media (max-width:992px) {
+  .cards {
+    row-gap: 16px;
+    column-gap: 16px;
+  }
+}
+
 @media screen and (max-width: 700px) {
   .cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 24px;
-    column-gap: 11px;
+    row-gap: 10px;
+    column-gap: 10px;
   }
 
   .tours__title {
     .first {
-      font-size: 36px;
+      font-size: 30px;
       line-height: 43px;
     }
     .second {
-      font-size: 16px;
+      font-size: 20px;
       line-height: 19px;
     }
   }
@@ -147,3 +154,4 @@
     line-height: 16px;
   }
 }
+

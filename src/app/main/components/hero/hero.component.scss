@@ -1,5 +1,5 @@
 .hero {
-  height: 85vh;
+  height: 60svh;
   max-height: 1080px;
   width: 100vw;
   background: url("./../../../../assets/images/hero_bg2.png");
@@ -12,7 +12,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 85vh;
+  height: 60svh;
   max-height: 1080px;
   background-color: #2a6d8a;
   opacity: 30%;
@@ -27,9 +27,9 @@
   justify-content: center;
   height: 100%;
   text-align: center;
-  h4 {
-    font-size: 96px;
-    line-height: 117.02px;
+  h1 {
+    font-size: 40px;
+    line-height: 120%;
     font-weight: 700;
     color: #ffffff;
     max-width: 1423px;
@@ -37,20 +37,12 @@
   }
 }
 
-// @media screen and (max-width: 1600px) {
-//   .hero__content {
-//     h4 {
-//       max-width: 90%;
-//     }
-//   }
-// }
-
 @media screen and (max-width: 1500px) {
   .hero__content {
-    h4 {
+    h1{
       max-width: 70%;
-      font-size: 50px;
-      line-height: 60px;
+      font-size: 30px;
+      line-height: 120%;
     }
   }
 }
@@ -58,10 +50,11 @@
 @media screen and (max-width: 800px) {
   .hero,
   .hero__background {
-    height: 70vh;
+    height: 300px;
   }
+
   .hero__content {
-    h4 {
+    h1 {
       max-width: 297px;
       font-size: 20px;
       line-height: 24px;

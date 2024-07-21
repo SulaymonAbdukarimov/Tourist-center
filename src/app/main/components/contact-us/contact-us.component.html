@@ -5,26 +5,31 @@
     </div>
     <p>Оставьте свои данные для связи</p>
   </div>
-  <form>
+  <form [formGroup]="userForm">
     <div>
-      <input type="text" placeholder="Ваше полное имя ">
+      <input formControlName="name" type="text" placeholder="Ваше полное имя ">
     </div>
     <div class="email_phone__wrapper">
       <div>
-        <input type="number" placeholder="Ваш номер телефона  ">
+        <input 
+          formControlName="phone"
+          placeholder="Ваш номер телефона"
+          [showMaskTyped]="true"
+          [prefix]="'+998'"
+          [mask]="'(00)0000000'" >
       </div>
       <div>
-        <input type="email" placeholder="Ваш email  ">
+        <input formControlName="email" type="email" placeholder="Ваш email  ">
       </div>
     </div>
     <div>
-      <input type="text" placeholder="Тема ">
+      <input type="text" formControlName="subject" placeholder="Тема ">
     </div>
     <div>
-      <textarea placeholder="Ваше сообщение "></textarea>
+      <textarea formControlName="message" placeholder="Ваше сообщение "></textarea>
     </div>
     <div class="btn__wrapper">
-      <button type="submit">Отправить </button>
+      <button (click)="submit()">Отправить </button>
     </div>
   </form>
 </div>

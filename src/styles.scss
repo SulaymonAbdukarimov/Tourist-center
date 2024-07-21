@@ -9,3 +9,17 @@
 body {
   font-family: "Montserrat", sans-serif;
 }
+@keyframes swipe-right {
+  0% {
+      left: -100%;
+  }
+  100% {
+      left: 0;
+  }
+}
+
+h1,h2 {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
