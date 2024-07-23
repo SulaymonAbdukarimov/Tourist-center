@@ -1,23 +1,25 @@
-import { Component} from '@angular/core';
+import { NgStyle } from '@angular/common';
+import { Component, signal } from '@angular/core';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 interface Destinations {
-  placeName: string,
-  image: string
-  description: string
-  id: number,
-  detailImg: string
+  placeName: string;
+  image: string;
+  description: string;
+  id: number;
+  detailImg: string;
 }
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [NzModalModule, NgStyle],
   selector: 'app-destinations',
   templateUrl: './destinations.component.html',
-  styleUrls: ['./destinations.component.scss']
+  styleUrls: ['./destinations.component.scss'],
 })
 export class DestinationsComponent {
+  isModal = signal<boolean>(false);
   activeCard = new Set<number>();
-
 
   destinationList: Destinations[] = [
     {
@@ -25,7 +27,7 @@ export class DestinationsComponent {
       image: 'assets/images/dubai.png',
       description: `Город и эмират на побережье Персидского заливав Объединенных Арабских Эмиратах, который славится своими роскошными магазинами, ультрасовременной архитектурой, ресторанами и ночными клубами.Силуэт города формируют бесчисленные небоскребы,в том числе Бурдж- Халифа высотой 830 метров.У его основания расположен музыкальный фонтан "Дубай", подсвеченный прожекторами. На искусственном острове рядом с побережьем находится курорт Atlantis The Palm с аквапарком и парком морских животных.`,
       id: 0,
-      detailImg: 'assets/images/dubai_desc.png'
+      detailImg: 'assets/images/dubai_p.png',
     },
     {
       placeName: 'АНТАЛИЯ',
@@ -40,7 +42,7 @@ export class DestinationsComponent {
 из-за Активного туристического
 потока`,
       id: 1,
-      detailImg: 'assets/images/antalia_desc.png'
+      detailImg: 'assets/images/antalia_desc.png',
     },
     {
       placeName: 'ТАИЛАНД',
@@ -52,7 +54,7 @@ export class DestinationsComponent {
 ное в юго-западной части полуострова Индокитай 
 и в северной части полуостров а Малакка.`,
       id: 2,
-      detailImg: 'assets/images/tayland_desc.png'
+      detailImg: 'assets/images/tayland_desc.png',
     },
     {
       placeName: 'МАЛЬДИВЫ',
@@ -68,7 +70,7 @@ export class DestinationsComponent {
           (Пятничная мечеть), фундамент и стены которой украшены
           резьбой по белому кораллу.`,
       id: 3,
-      detailImg: 'assets/images/maldiva_desc.png'
+      detailImg: 'assets/images/maldiva_desc.png',
     },
     {
       placeName: 'ГОА',
@@ -87,7 +89,7 @@ export class DestinationsComponent {
 прекрасным примером барочной архитектуры.
 `,
       id: 4,
-      detailImg: 'assets/images/goa_desc.png'
+      detailImg: 'assets/images/goa_desc.png',
     },
     {
       placeName: 'ШАРМ-ЭШ-ШЕЙХ',
@@ -104,7 +106,7 @@ export class DestinationsComponent {
 Здесь можно поплавать рядом с ватонувшим 
 кораблем "Тистлегорм" и посмотреть на рифы Шарк и Иоланда.`,
       id: 6,
-      detailImg: 'assets/images/sharm_desc.png'
+      detailImg: 'assets/images/sharm_desc.png',
     },
     {
       placeName: 'ИСТАНБУЛ',
@@ -119,7 +121,7 @@ export class DestinationsComponent {
 В 1923 году, после Войны за независимость 
 Турции новой столицей страны стала Анкара`,
       id: 7,
-      detailImg: 'assets/images/istanbul_desc.png'
+      detailImg: 'assets/images/istanbul_desc.png',
     },
     {
       placeName: 'ГРУЗИЯ',
@@ -134,12 +136,13 @@ export class DestinationsComponent {
 Занимает130-е место в мире по численности
 населения и  119-е по территории. Столица —Тбилиси.`,
       id: 8,
-      detailImg: 'assets/images/gruziya_desc.png'
+      detailImg: 'assets/images/gruziya_desc.png',
     },
-  ]
+  ];
 
   onSelect(index: number): void {
     this.activeCard.clear();
     this.activeCard.add(index);
+    this.isModal.set(true);
   }
 }

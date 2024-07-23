@@ -11,14 +11,27 @@
   }
 </div>
 
-<!-- @for (active of activeCard.values(); track $index) {
-  <div class="card__detail">
-    <div class="card__text">
-      {{destinationList[active].description}}
-    </div>
-    <div class="img__wrappper" [class.gruziya]="destinationList[active].placeName == 'ГРУЗИЯ'">
-      <img [src]="destinationList[active].detailImg" alt="dubai">
-    </div>
-  </div>
-} -->
+<nz-modal 
+  [(nzVisible)]="isModal"
+  [nzWidth]="'auto'"
+  [nzTitle]="''" 
+  [nzFooter]="null"
+  [nzClosable]="true"
+  [nzCentered]="true"
+
+  (nzOnCancel)="isModal.set(false)"
+>
+  <ng-container *nzModalContent>
+      @for (active of activeCard.values(); track $index) {
+        <div class="card__detail">
+          <div class="box">
+            <div class="card__text">
+              {{destinationList[active].description}}
+            </div>
+          </div>
+          <img [src]="destinationList[active].detailImg">
+        </div>
+      }
+  </ng-container>
+</nz-modal>
 
