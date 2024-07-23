@@ -66,12 +66,14 @@ textarea {
   display: flex;
   justify-content: center;
   button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
     border: 1px solid #000000;
     font-size: 36px;
-    line-height: 43px;
     background: white;
     cursor: pointer;
-    padding: 40px 87px;
 
     &:hover {
       background: #000000;

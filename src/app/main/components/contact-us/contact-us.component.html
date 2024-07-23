@@ -29,7 +29,13 @@
       <textarea formControlName="message" placeholder="Ваше сообщение "></textarea>
     </div>
     <div class="btn__wrapper">
-      <button (click)="submit()">Отправить </button>
+      <button (click)="submit()">
+        @if (isLoading()) {
+          <nz-spin nzSimple [nzSize]="'small'"></nz-spin>
+        } @else {
+          Отправить
+        }
+      </button>
     </div>
   </form>
 </div>
