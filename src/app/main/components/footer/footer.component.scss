@@ -1,6 +1,4 @@
-.footer {
-  margin-top: 50px;
-}
+
 strong {
   font-size: 30px;
   line-height: 42px;
@@ -19,6 +17,23 @@ ul {
     }
   }
 }
+
+.media {
+  transition: all 0.3s;
+  &:hover {
+    transform: scale(110%);
+  }
+}
+
+.tel {
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    color: rgb(102, 41, 102);
+  }
+}
+
 .call {
   display: flex;
   align-items: center;
@@ -35,7 +50,6 @@ ul {
 }
 
 .logo {
-  margin-top: 40px;
   display: flex;
   justify-content: center;
   img {

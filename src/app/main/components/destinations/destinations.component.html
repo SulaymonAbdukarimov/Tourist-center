@@ -1,33 +1,24 @@
-<div>
-  <div class="cards">
-    @for (acc of accardion; track acc;let idx = $index) {
-    <div>
-      <div class="card__inner">
-        @for (destination of acc; track $index) {
-        <div class="card" (click)="showDescription(destination.id)">
-          <div class="img__wrapper">
-            <img [src]="destination.image" [alt]="destination.placeName">
-          </div>
-          <div class="card_btn__wrapper">
-            <button [class.sharm]="destination.placeName =='ШАРМ-ЭШ-ШЕЙХ'">{{destination.placeName}}</button>
-          </div>
-        </div>
-        }
+<div class="cards">
+  @for (acc of destinationList; track acc.id; let idx = $index) {
+    <div class="card" (click)="onSelect(idx)">
+      <div class="img__wrapper">
+        <img [src]="acc.image" [alt]="acc.placeName">
       </div>
-      @if( acc[0] && getDescriptionData(acc[0]?.['column']) && getDescriptionData(acc[0]?.['column'])?.open) {
-      <div class="card__detail">
-        <div class="card__text">
-          {{getDescriptionData(acc[0]?.['column'])?.description}}
-        </div>
-        <div class="img__wrappper" [class.gruziya]="getDescriptionData(acc[0]?.['column'])?.placeName == 'ГРУЗИЯ'">
-          <img [src]="getDescriptionData(acc[0]?.['column'])?.detailImg" alt="dubai">
-        </div>
+      <div class="card_btn__wrapper">
+        <button [class.sharm]="acc.placeName =='ШАРМ-ЭШ-ШЕЙХ'">{{acc.placeName}}</button>
       </div>
-      }
     </div>
-    }
-  </div>
-
-
-
+  }
 </div>
+
+<!-- @for (active of activeCard.values(); track $index) {
+  <div class="card__detail">
+    <div class="card__text">
+      {{destinationList[active].description}}
+    </div>
+    <div class="img__wrappper" [class.gruziya]="destinationList[active].placeName == 'ГРУЗИЯ'">
+      <img [src]="destinationList[active].detailImg" alt="dubai">
+    </div>
+  </div>
+} -->
+

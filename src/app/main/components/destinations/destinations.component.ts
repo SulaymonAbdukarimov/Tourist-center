@@ -1,5 +1,4 @@
-import { NgFor } from '@angular/common';
-import { Component, HostListener, OnInit, signal } from '@angular/core';
+import { Component} from '@angular/core';
 
 interface Destinations {
   placeName: string,
@@ -9,11 +8,6 @@ interface Destinations {
   detailImg: string
 }
 
-interface Accardion extends Destinations {
-  open: boolean,
-  column: number
-}
-
 @Component({
   standalone: true,
   imports: [],
@@ -21,9 +15,10 @@ interface Accardion extends Destinations {
   templateUrl: './destinations.component.html',
   styleUrls: ['./destinations.component.scss']
 })
-export class DestinationsComponent implements OnInit {
+export class DestinationsComponent {
+  activeCard = new Set<number>();
 
-  // #region destinationList
+
   destinationList: Destinations[] = [
     {
       placeName: 'ДУБАЙ',
@@ -95,24 +90,6 @@ export class DestinationsComponent implements OnInit {
       detailImg: 'assets/images/goa_desc.png'
     },
     {
-      placeName: 'БАКУ',
-      image: 'assets/images/baku.png',
-      description: `
-Исторический центр Баку напоминает о его
-бурном прошлом — от периода, когда город 
-был портом Великого шелкового пути, до нефтяного 
-бума советских времен. Старый город представляет
-собой лабиринт аллей, мечетей, исторических зданий и
-остатков укреплений, включая дворец ширваншахов и
-Девичью башню, которая теперь входит в список объектов 
-Всемирного наследия ЮНЕСКО. Это не просто историческая
-достопримечательность: город известен своим 
-изобразительным искусством и культурными развлечениями
-а также оживленным предпринимательским сектором.`,
-      id: 5,
-      detailImg: 'assets/images/baku_desc.png'
-    },
-    {
       placeName: 'ШАРМ-ЭШ-ШЕЙХ',
       image: 'assets/images/sharm-esh-shayx.png',
       description: `
@@ -160,90 +137,9 @@ export class DestinationsComponent implements OnInit {
       detailImg: 'assets/images/gruziya_desc.png'
     },
   ]
-  // #endregion
 
-  isMobile = signal(false)
-  accardion: any[] = [];
-  activeAccardion: Record<string, boolean> = {
+  onSelect(index: number): void {
+    this.activeCard.clear();
+    this.activeCard.add(index);
   }
-  activeAccardionList: Accardion[] = []
-  columnCount = this.isMobile() ? 2 : 3
-
-  constructor() {
-    if (window.innerWidth < 700) {
-      this.destinationList.pop()
-    }
-    this.isMobile.set(window.innerWidth < 700)
-    this.columnCount = this.isMobile() ? 2 : 3
-  }
-
-  ngOnInit() {
-    this.handleAccardionShowing()
-  }
-
-  getDescriptionData(column: number) {
-    return this.activeAccardionList.find(act => act.column == column)
-  }
-  handleAccardionShowing() {
-    let arr: any = [];
-    this.destinationList.forEach((description, index) => {
-      let obj: Accardion = {
-        open: false,
-        id: description.id,
-        column: this.getArrayIndexOfAccardion(index),
-        placeName: description.placeName,
-        detailImg: description.detailImg,
-        description: description.description,
-        image: description.image
-      }
-
-      if (!(description.id in this.activeAccardion)) {
-        this.activeAccardion[description.id] = false
-      }
-
-      arr.push(obj)
-      if (arr.length === this.columnCount) {
-        this.accardion.push(arr)
-        arr = [];
-      }
-    })
-  }
-
-  getArrayIndexOfAccardion(index: number): number {
-    return Math.ceil(Math.floor((index + 1)) / this.columnCount)
-  }
-
-  showDescription(id: number): void {
-    if (this.accardion.length) {
-      for (let acc of this.accardion[this.getArrayIndexOfAccardion(id) - 1]) {
-        if (id == acc.id) {
-          acc.open = !acc.open;
-          if (acc.id in this.activeAccardion) {
-            this.activeAccardion[acc.id] = !this.activeAccardion[acc.id]
-          }
-          if (this.activeAccardionList.length && this.activeAccardionList.find((ac) => ac.column == acc.column)) {
-            this.activeAccardionList = this.activeAccardionList.filter((ac) => ac.column != acc.column);
-            this.activeAccardionList.push(acc)
-          } else {
-            this.activeAccardionList.push(acc)
-          }
-        } else {
-          acc.open = false
-          if (acc.id in this.activeAccardion) {
-            this.activeAccardion[acc.id] = false
-          }
-        }
-      }
-    }
-  }
-
-  getOpenedCardId(id: number) {
-    for (let acc of this.accardion[this.getArrayIndexOfAccardion(id) - 1]) {
-      if (acc.open) {
-        return acc.id
-      }
-    }
-
-  }
-
 }
